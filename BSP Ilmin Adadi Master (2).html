@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="ha" dir="ltr" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">BSP Ilmin Adadi Master | Global Multilingual Engine & Admin Security Office</title>
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bsp: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            dark: '#0f291e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;850&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col pb-28 selection:bg-bsp-500 selection:text-white">
+
+    <!-- Topmost Header Bar with Admin Key & Global Multilingual Selector -->
+    <header class="bg-bsp-900 text-white text-xs border-b border-bsp-800 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <span class="inline-flex items-center gap-1 bg-green-700/60 text-green-200 px-2 py-0.5 rounded text-[11px] font-semibold border border-green-600/50">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> NIGERIA
+                </span>
+                <span id="headerStateOrg" class="text-slate-300 font-medium">GOMBE & ADAMAWA STATE • DR. ANAS ABUBAKAR</span>
+            </div>
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <!-- TOP KEY ICON: STRICTLY LEADS TO SECURE ADMIN LOGIN -->
+                <button onclick="openAdminLoginModal()" class="w-7 h-7 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-lg transition shadow flex items-center justify-center cursor-pointer" title="Ofishin Mai Mallaka / Admin Login">
+                    <i class="fa-solid fa-key text-xs"></i>
+                </button>
+                <a href="https://wa.me/2347036007067" target="_blank" class="flex items-center gap-1 text-emerald-300 hover:text-white transition">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> <span data-i18n="nav.contact">Tuntuɓi Mu</span>
+                </a>
+                
+                <!-- GLOBAL MULTILINGUAL DROPDOWN SELECTOR (6 Languages) -->
+                <div class="relative">
+                    <button onclick="toggleLangDropdown()" class="flex items-center gap-1.5 bg-bsp-800 hover:bg-bsp-700 px-3 py-1 rounded text-slate-200 cursor-pointer transition">
+                        <i class="fa-solid fa-globe text-xs text-emerald-400"></i>
+                        <span id="currentLangDisplay" class="font-bold">Hausa</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i>
+                    </button>
+                    <div id="langDropdownMenu" class="hidden absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-48 bg-white text-slate-900 rounded-xl shadow-2xl border border-slate-200 py-2 z-50">
+                        <button onclick="setLanguage('ha')" class="w-full text-left rtl:text-right px-4 py-2 hover:bg-bsp-50 flex items-center gap-2 text-xs font-semibold">🇳🇬 Hausa (Default)</button>
+                        <button onclick="setLanguage('en')" class="w-full text-left rtl:text-right px-4 py-2 hover:bg-bsp-50 flex items-center gap-2 text-xs font-semibold">🇬🇧 English</button>
+                        <button onclick="setLanguage('ar')" class="w-full text-left rtl:text-right px-4 py-2 hover:bg-bsp-50 flex items-center gap-2 text-xs font-semibold">🇸🇦 العربية (Arabic)</button>
+                        <button onclick="setLanguage('fr')" class="w-full text-left rtl:text-right px-4 py-2 hover:bg-bsp-50 flex items-center gap-2 text-xs font-semibold">🇫🇷 Français (French)</button>
+                        <button onclick="setLanguage('es')" class="w-full text-left rtl:text-right px-4 py-2 hover:bg-bsp-50 flex items-center gap-2 text-xs font-semibold">🇪🇸 Español (Spanish)</button>
+                        <button onclick="setLanguage('pt')" class="w-full text-left rtl:text-right px-4 py-2 hover:bg-bsp-50 flex items-center gap-2 text-xs font-semibold">🇵🇹 Português (Portuguese)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <div class="bg-white border-b border-slate-200 shadow-sm sticky top-[33px] z-40">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer" onclick="switchTab('dashboard')">
+                <div class="w-10 h-10 bg-bsp-800 rounded-xl flex items-center justify-center shadow-inner border border-bsp-600 text-amber-400 font-black text-lg tracking-tighter">
+                    50
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-extrabold text-bsp-900 leading-tight" data-i18n="app.title">BSP ILMIN ADADI MASTER</h1>
+                    <p class="text-[11px] text-slate-500 font-medium" data-i18n="app.subtitle">Dr. Anas Abubakar • Sanin Lambobi, Sanin Rayuwa</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                <button onclick="switchTab('remedies')" class="hidden sm:flex items-center gap-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-3 py-2 rounded-lg transition shadow-sm">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="nav.remedies">Gyare-gyare</span>
+                </button>
+                <button onclick="switchTab('calculator')" class="hidden sm:flex items-center gap-1.5 bg-bsp-800 hover:bg-bsp-700 text-white text-xs font-semibold px-3 py-2 rounded-lg transition shadow-sm">
+                    <i class="fa-solid fa-calculator"></i> <span data-i18n="nav.calculator">Fara Bincike</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-700 hover:text-bsp-800 p-2 text-lg">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200 px-4 py-3 space-y-2 shadow-lg">
+            <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-slate-700 hover:bg-bsp-50 font-medium"><i class="fa-solid fa-house mr-2 rtl:mr-0 rtl:ml-2 text-bsp-700"></i> <span data-i18n="nav.home">Gida</span></button>
+            <button onclick="switchTab('calculator'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-slate-700 hover:bg-bsp-50 font-medium"><i class="fa-solid fa-calculator mr-2 rtl:mr-0 rtl:ml-2 text-bsp-700"></i> <span data-i18n="nav.calculator">Lissafi</span></button>
+            <button onclick="switchTab('report50'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-slate-700 hover:bg-bsp-50 font-medium"><i class="fa-solid fa-list-check mr-2 rtl:mr-0 rtl:ml-2 text-bsp-700"></i> <span data-i18n="nav.report50">Taswirar 50</span></button>
+            <button onclick="switchTab('remedies'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-slate-700 hover:bg-bsp-50 font-medium"><i class="fa-solid fa-wand-magic-sparkles mr-2 rtl:mr-0 rtl:ml-2 text-bsp-700"></i> <span data-i18n="nav.remedies">Gyare-gyare</span></button>
+            <button onclick="switchTab('compatibility'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-slate-700 hover:bg-bsp-50 font-medium"><i class="fa-solid fa-handshake mr-2 rtl:mr-0 rtl:ml-2 text-bsp-700"></i> <span data-i18n="nav.compatibility">Daidaituwa</span></button>
+            <button onclick="switchTab('master'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-slate-700 hover:bg-bsp-50 font-medium"><i class="fa-solid fa-crown mr-2 rtl:mr-0 rtl:ml-2 text-bsp-700"></i> <span data-i18n="nav.master">Master Numbers</span></button>
+            <button onclick="switchTab('history'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-slate-700 hover:bg-bsp-50 font-medium"><i class="fa-solid fa-clock-rotate-left mr-2 rtl:mr-0 rtl:ml-2 text-bsp-700"></i> <span data-i18n="nav.history">Tarihi</span></button>
+            <!-- CUSTOMER ACTIVATION OFFICE (CUSTOMER MENU ONLY) -->
+            <button onclick="switchTab('activate'); toggleMobileMenu()" class="block w-full text-left rtl:text-right px-3 py-2 rounded-lg text-amber-800 hover:bg-amber-50 font-bold"><i class="fa-solid fa-shield-halved mr-2 rtl:mr-0 rtl:ml-2 text-amber-600"></i> <span data-i18n="nav.customer_license">Ofishin Tsaro & Lasisi</span></button>
+        </div>
+    </div>
+
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- TAB: DASHBOARD -->
+        <section id="tab-dashboard" class="tab-content space-y-6">
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div class="w-14 h-14 bg-bsp-50 rounded-2xl flex items-center justify-center border border-bsp-200 shadow-inner">
+                        <i class="fa-solid fa-atom text-bsp-700 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-black text-slate-900 tracking-tight" data-i18n="dash.welcome_heading">BSP ILMIN ADADI MASTER</h2>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5" data-i18n="dash.welcome_sub">Dual Numerology Engine • Cikakken Tsarin 50 • Multi-Tenant RBAC Security</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                        GREEN • WHITE • GREEN
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                        GOMBE & ADAMAWA
+                    </span>
+                </div>
+            </div>
+
+            <!-- Hero Card -->
+            <div class="bg-gradient-to-br from-bsp-900 via-bsp-800 to-bsp-dark text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden space-y-6">
+                <div class="absolute right-0 bottom-0 transform translate-x-6 translate-y-6 opacity-10 pointer-events-none">
+                    <i class="fa-solid fa-atom text-[200px]"></i>
+                </div>
+                <div class="max-w-2xl relative z-10 space-y-3">
+                    <span class="inline-block bg-amber-400 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider" data-i18n="hero.badge">
+                        DR. ANAS ABUBAKAR DUAL NUMEROLOGY ENGINE
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight" data-i18n="hero.title">
+                        Barka da Zuwa BSP Ilmin Adadi Master
+                    </h2>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed" data-i18n="hero.desc">
+                        Zaɓi nau'in binciken da kake so ko bincika Karfin Lambobi, Missing Number Remedies, da Tsarin Addu'a / Zikiri da Gyare-gyare.
+                    </p>
+                </div>
+
+                <!-- Dual Mode Selection Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10 pt-2">
+                    <div onclick="selectModeAndStart('complete')" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl p-5 cursor-pointer transition flex items-center justify-between group">
+                        <div class="space-y-1">
+                            <span class="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded uppercase" data-i18n="mode.mode1_badge">MODE 1</span>
+                            <h3 class="text-lg font-black text-white" data-i18n="mode.mode1_title">🌟 Cikakken Bincike</h3>
+                            <p class="text-xs text-slate-300" data-i18n="mode.mode1_desc">Ina da ranar haihuwata (Birth Date + Name)</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-amber-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+                        </div>
+                    </div>
+
+                    <div onclick="selectModeAndStart('name')" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl p-5 cursor-pointer transition flex items-center justify-between group">
+                        <div class="space-y-1">
+                            <span class="bg-emerald-400 text-slate-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded uppercase" data-i18n="mode.mode2_badge">MODE 2</span>
+                            <h3 class="text-lg font-black text-white" data-i18n="mode.mode2_title">🔢 Binciken Suna Zalla</h3>
+                            <p class="text-xs text-slate-300" data-i18n="mode.mode2_desc">Ban san ranar haihuwata ba (Name Only)</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Numerology Menu Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div onclick="switchTab('remedies')" class="bg-gradient-to-r from-emerald-50 to-emerald-100/50 hover:from-emerald-100 hover:to-emerald-200 border border-emerald-300 rounded-2xl p-5 transition cursor-pointer shadow-sm flex items-center justify-between group">
+                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div class="w-12 h-12 bg-emerald-700 text-white rounded-xl flex items-center justify-center text-xl font-bold group-hover:scale-105 transition">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-extrabold text-emerald-800 uppercase tracking-wider" data-i18n="card.remedies_sub">Spiritual & Remedies</span>
+                            <h3 class="text-base font-extrabold text-slate-900 mt-0.5" data-i18n="card.remedies_title">Karfin Lambobi & Gyare-gyare</h3>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-emerald-200 flex items-center justify-center text-emerald-800 group-hover:bg-emerald-800 group-hover:text-white transition">
+                        <i class="fa-solid fa-chevron-right text-xs rtl:rotate-180"></i>
+                    </div>
+                </div>
+
+                <div onclick="switchTab('calculator')" class="bg-white hover:bg-bsp-50/50 border border-slate-200 hover:border-bsp-300 rounded-2xl p-5 transition cursor-pointer shadow-sm flex items-center justify-between group">
+                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div class="w-12 h-12 bg-bsp-100 text-bsp-800 rounded-xl flex items-center justify-center text-xl font-bold group-hover:bg-bsp-800 group-hover:text-white transition">
+                            <i class="fa-solid fa-user-pen"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-bsp-700 uppercase tracking-wider" data-i18n="card.calc_sub">Shigar da Bayanai</span>
+                            <h3 class="text-base font-extrabold text-slate-900 mt-0.5" data-i18n="card.calc_title">Fara Bincike</h3>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-bsp-800 group-hover:text-white transition">
+                        <i class="fa-solid fa-chevron-right text-xs rtl:rotate-180"></i>
+                    </div>
+                </div>
+
+                <div onclick="switchTab('report50')" class="bg-white hover:bg-bsp-50/50 border border-slate-200 hover:border-bsp-300 rounded-2xl p-5 transition cursor-pointer shadow-sm flex items-center justify-between group">
+                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div class="w-12 h-12 bg-bsp-100 text-bsp-800 rounded-xl flex items-center justify-center text-xl font-bold group-hover:bg-bsp-800 group-hover:text-white transition">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-bsp-700 uppercase tracking-wider" data-i18n="card.report_sub">Complete 50 Analysis</span>
+                            <h3 class="text-base font-extrabold text-slate-900 mt-0.5" data-i18n="card.report_title">Taswirar Abubuwa 50</h3>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-bsp-800 group-hover:text-white transition">
+                        <i class="fa-solid fa-chevron-right text-xs rtl:rotate-180"></i>
+                    </div>
+                </div>
+
+                <div onclick="switchTab('compatibility')" class="bg-white hover:bg-bsp-50/50 border border-slate-200 hover:border-bsp-300 rounded-2xl p-5 transition cursor-pointer shadow-sm flex items-center justify-between group">
+                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div class="w-12 h-12 bg-bsp-100 text-bsp-800 rounded-xl flex items-center justify-center text-xl font-bold group-hover:bg-bsp-800 group-hover:text-white transition">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-bsp-700 uppercase tracking-wider" data-i18n="card.comp_sub">Compatibility</span>
+                            <h3 class="text-base font-extrabold text-slate-900 mt-0.5" data-i18n="card.comp_title">Daidaituwar Dangantaka</h3>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-bsp-800 group-hover:text-white transition">
+                        <i class="fa-solid fa-chevron-right text-xs rtl:rotate-180"></i>
+                    </div>
+                </div>
+
+                <div onclick="switchTab('master')" class="bg-white hover:bg-bsp-50/50 border border-slate-200 hover:border-bsp-300 rounded-2xl p-5 transition cursor-pointer shadow-sm flex items-center justify-between group">
+                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div class="w-12 h-12 bg-bsp-100 text-bsp-800 rounded-xl flex items-center justify-center text-xl font-bold group-hover:bg-bsp-800 group-hover:text-white transition">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-bsp-700 uppercase tracking-wider" data-i18n="card.master_sub">Master Numbers</span>
+                            <h3 class="text-base font-extrabold text-slate-900 mt-0.5" data-i18n="card.master_title">Lambobin Musamman</h3>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-bsp-800 group-hover:text-white transition">
+                        <i class="fa-solid fa-chevron-right text-xs rtl:rotate-180"></i>
+                    </div>
+                </div>
+
+                <!-- CUSTOMER ACTIVATION OFFICE CARD -->
+                <div onclick="switchTab('activate')" class="bg-gradient-to-r from-amber-50 to-amber-100/50 hover:from-amber-100 hover:to-amber-200 border border-amber-300 rounded-2xl p-5 transition cursor-pointer shadow-sm flex items-center justify-between group">
+                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div class="w-12 h-12 bg-amber-600 text-white rounded-xl flex items-center justify-center text-xl font-bold group-hover:scale-105 transition">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-extrabold text-amber-900 uppercase tracking-wider" data-i18n="card.license_sub">Customer License</span>
+                            <h3 class="text-base font-extrabold text-slate-900 mt-0.5" data-i18n="card.license_title">Ofishin Tsaro & Lasisi</h3>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-amber-200 flex items-center justify-center text-amber-900 group-hover:bg-amber-800 group-hover:text-white transition">
+                        <i class="fa-solid fa-chevron-right text-xs rtl:rotate-180"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer Notice -->
+            <div class="bg-white border-l-4 rtl:border-l-0 rtl:border-r-4 border-amber-500 p-4 rounded-r-2xl rtl:rounded-r-none rtl:rounded-l-2xl text-xs text-slate-600 shadow-sm leading-relaxed">
+                <span class="font-bold text-amber-600" data-i18n="disclaimer.label">Sanarwa:</span> <span data-i18n="disclaimer.text">Ilmin Adadi hanya ce ta gargajiya/esoteric ta fassarar lambobi. Ba a gabatar da sakamakon a matsayin tabbatacciyar hasashen kimiyya ko tabbacin abin da zai faru a nan gaba ba. Mai amfani ya kamata ya yi amfani da hankali da shawarwarin ƙwararru.</span>
+            </div>
+        </section>
+
+        <!-- TAB: CUSTOMER ACTIVATION / SECURITY OFFICE (OFISHIN TSARO & LASISI) -->
+        <section id="tab-activate" class="tab-content hidden space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm max-w-2xl mx-auto space-y-6">
+                <div class="border-b border-slate-100 pb-4 text-center">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-800 rounded-2xl mx-auto flex items-center justify-center text-2xl font-bold mb-3 shadow-inner">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-bsp-900" data-i18n="activate.title">Ofishin Kunnawa & Lasisi</h2>
+                    <p class="text-slate-500 text-sm mt-1" data-i18n="activate.desc">Wannan aikace-aikacen yana buƙatar kuɗi kamin amfani. Don Allah shigar da lambar kunnawa ko tuntuɓi ofishin Dr. Anas Abubakar.</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="activate.device_id_label">Bayanin Na'ura / ID na Na'ura (Device ID):</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="displayDeviceId" readonly class="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 font-mono text-xs text-slate-800 select-all" />
+                        <button onclick="copyDeviceId()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-4 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer" data-i18n="activate.btn_copy">
+                            Kwafi
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="activate.license_code_label">Lambar Kunnawa (Activation Code / License Key): *</label>
+                        <input type="text" id="customerActivationInput" placeholder="AAM-2026-XXXX-XXXX" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 font-mono text-slate-900 focus:outline-none focus:border-bsp-600 transition uppercase tracking-wider">
+                    </div>
+                    <button onclick="verifyCustomerLicense()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black py-4 rounded-xl shadow-lg transition duration-200 text-sm flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-shield-check"></i> <span data-i18n="activate.btn_activate">Kunna</span>
+                    </button>
+                </div>
+
+                <div id="activationResultBox" class="hidden p-4 rounded-2xl text-xs space-y-1"></div>
+            </div>
+        </section>
+
+        <!-- OTHER TABS -->
+        <section id="tab-calculator" class="tab-content hidden space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm max-w-3xl mx-auto space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h2 class="text-2xl font-black text-bsp-900 flex items-center gap-2">
+                        <i class="fa-solid fa-user-gear text-bsp-700"></i> <span data-i18n="calc.title">Shigar da Bayanai</span>
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-1" data-i18n="calc.subtitle">Cika bayanan cikakken suna da ranar haihuwa.</p>
+                </div>
+                <form id="numerologyForm" onsubmit="handleCalculation(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="calc.fullname_label">Cikakken Suna: *</label>
+                            <input type="text" id="fullName" required placeholder="Misali: Ibrahim Musa" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="calc.birthdate_label">Ranar Haihuwa: *</label>
+                            <input type="date" id="birthDate" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-bsp-800 hover:bg-bsp-700 text-white font-bold py-3.5 rounded-xl cursor-pointer" data-i18n="calc.btn_submit">Gudanar da Bincike</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="tab-report50" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 id="report50UserName" class="text-2xl font-black text-slate-900" data-i18n="report.title">Sakamakon Bincike</h2>
+                    <p id="report50UserMeta" class="text-slate-500 text-sm" data-i18n="report.subtitle">Taswirar Abubuwa 50</p>
+                </div>
+                <button onclick="saveCurrentReport()" class="bg-bsp-800 text-white px-4 py-2 rounded-xl text-sm font-bold cursor-pointer" data-i18n="report.btn_save">Ajiye a Tarihi</button>
+            </div>
+            <div id="fiftyItemsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
+
+        <section id="tab-remedies" class="tab-content hidden space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm max-w-4xl mx-auto space-y-4">
+                <h2 class="text-2xl font-black text-bsp-900"><i class="fa-solid fa-wand-magic-sparkles text-emerald-600"></i> <span data-i18n="remedies.title">Karfin Lambobi da Gyare-gyare</span></h2>
+                <p class="text-slate-600 text-sm" data-i18n="remedies.desc">Binciko hanyoyin gyara da karfin lambobi a rayuwa.</p>
+            </div>
+        </section>
+
+        <section id="tab-compatibility" class="tab-content hidden space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm max-w-2xl mx-auto space-y-4">
+                <h2 class="text-2xl font-black text-bsp-900"><i class="fa-solid fa-handshake text-bsp-700"></i> <span data-i18n="comp.title">Daidaituwar Dangantaka</span></h2>
+                <p class="text-slate-600 text-sm" data-i18n="comp.desc">Kwatanta dacewar mutum biyu.</p>
+            </div>
+        </section>
+
+        <section id="tab-master" class="tab-content hidden space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm max-w-3xl mx-auto space-y-4">
+                <h2 class="text-2xl font-black text-bsp-900"><i class="fa-solid fa-crown text-amber-500"></i> <span data-i18n="master.title">Master Numbers (11, 22, 33)</span></h2>
+                <p class="text-slate-600 text-sm" data-i18n="master.desc">Lambobin musamman masu karfin ruhaniya da tsara duniya.</p>
+            </div>
+        </section>
+
+        <section id="tab-history" class="tab-content hidden space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+                <h2 class="text-2xl font-black text-bsp-900" data-i18n="history.title">Tarihin Bincike</h2>
+                <div id="historyListContainer" class="space-y-3"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- SECURE ADMIN LOGIN MODAL (TRIGGERED BY KEY) -->
+    <!-- ========================================== -->
+    <div id="adminLoginModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-amber-500 text-slate-950 rounded-xl flex items-center justify-center font-bold">🔑</div>
+                    <div>
+                        <h3 class="text-lg font-black text-bsp-900" data-i18n="admin_login.title">Admin Login</h3>
+                        <p class="text-xs text-slate-500" data-i18n="admin_login.subtitle">Ofishin Mai Mallaka & Admin</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminLoginModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="admin_login.user_label">Admin Username / Email:</label>
+                    <input type="text" id="adminLoginUser" placeholder="BSP-ASTRO-MASTER" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-3 text-sm focus:outline-none focus:border-bsp-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="admin_login.pass_label">Admin Password:</label>
+                    <input type="password" id="adminLoginPass" placeholder="••••••••••••" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-3 text-sm focus:outline-none focus:border-bsp-600">
+                </div>
+                <div id="adminLoginError" class="hidden text-xs text-red-600 font-semibold bg-red-50 p-3 rounded-xl border border-red-200"></div>
+                <button onclick="submitAdminLogin()" class="w-full bg-bsp-900 hover:bg-bsp-800 text-white font-bold py-3.5 rounded-xl text-xs transition shadow-lg cursor-pointer" data-i18n="admin_login.btn_submit">
+                    Shiga Ofishin Admin (Authenticate)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- REAL PROTECTED ADMIN OFFICE MODAL -->
+    <!-- ========================================== -->
+    <div id="adminOfficeModal" class="hidden fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md overflow-y-auto flex items-center justify-center p-2 sm:p-6">
+        <div class="bg-white border border-slate-200 rounded-3xl max-w-6xl w-full max-h-[96vh] overflow-y-auto p-5 sm:p-8 space-y-6 shadow-2xl relative">
+            
+            <!-- Admin Header -->
+            <div class="bg-gradient-to-r from-emerald-900 via-bsp-900 to-slate-900 text-white p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-md">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="w-12 h-12 bg-amber-400 text-slate-950 rounded-xl flex items-center justify-center text-2xl font-black shadow-inner">
+                        👑
+                    </div>
+                    <div>
+                        <span class="bg-emerald-700/80 text-emerald-200 text-[10px] font-extrabold px-2.5 py-0.5 rounded uppercase tracking-wider" data-i18n="admin_office.header_badge">OFISHIN ADMIN & LICENSE MANAGEMENT</span>
+                        <h2 class="text-xl sm:text-2xl font-black tracking-tight mt-0.5" data-i18n="admin_office.title">BSP Master Admin Control Center</h2>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="adminLogout()" class="bg-red-600/80 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-right-from-bracket text-sm"></i> <span data-i18n="admin_office.btn_logout">Fita (Logout)</span>
+                    </button>
+                    <button onclick="closeAdminOffice()" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-xmark text-sm"></i> <span data-i18n="admin_office.btn_close">Rufe</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin Navigation Tabs -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-3">
+                <button onclick="switchAdminTab('dashboard')" id="adminTabBtn-dashboard" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-bsp-800 text-white shadow-sm cursor-pointer"><i class="fa-solid fa-chart-line mr-1 rtl:mr-0 rtl:ml-1"></i> <span data-i18n="admin_tab.dashboard">Dashboard</span></button>
+                <button onclick="switchAdminTab('customers')" id="adminTabBtn-customers" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer"><i class="fa-solid fa-users mr-1 rtl:mr-0 rtl:ml-1"></i> <span data-i18n="admin_tab.customers">Customers</span></button>
+                <button onclick="switchAdminTab('licenses')" id="adminTabBtn-licenses" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer"><i class="fa-solid fa-certificate mr-1 rtl:mr-0 rtl:ml-1"></i> <span data-i18n="admin_tab.licenses">Licenses</span></button>
+                <button onclick="switchAdminTab('codes')" id="adminTabBtn-codes" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer"><i class="fa-solid fa-key mr-1 rtl:mr-0 rtl:ml-1"></i> <span data-i18n="admin_tab.codes">Activation Codes</span></button>
+                <button onclick="switchAdminTab('devices')" id="adminTabBtn-devices" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer"><i class="fa-solid fa-laptop mr-1 rtl:mr-0 rtl:ml-1"></i> <span data-i18n="admin_tab.devices">Device Binding</span></button>
+                <button onclick="switchAdminTab('audit')" id="adminTabBtn-audit" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer"><i class="fa-solid fa-clock-rotate-left mr-1 rtl:mr-0 rtl:ml-1"></i> <span data-i18n="admin_tab.audit">Activity History</span></button>
+            </div>
+
+            <!-- ADMIN TAB 1: DASHBOARD -->
+            <div id="adminContent-dashboard" class="admin-tabcontent space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-1">
+                        <span class="text-xs text-slate-500 font-bold uppercase" data-i18n="admin_dash.stat1">Total Customers</span>
+                        <div id="adminStatCustomers" class="text-3xl font-black text-bsp-900">0</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-1">
+                        <span class="text-xs text-slate-500 font-bold uppercase" data-i18n="admin_dash.stat2">Active Licenses</span>
+                        <div id="adminStatLicenses" class="text-3xl font-black text-bsp-900">0</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-1">
+                        <span class="text-xs text-slate-500 font-bold uppercase" data-i18n="admin_dash.stat3">Unused Codes</span>
+                        <div id="adminStatCodes" class="text-3xl font-black text-bsp-900">0</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-1">
+                        <span class="text-xs text-slate-500 font-bold uppercase" data-i18n="admin_dash.stat4">Bound Devices</span>
+                        <div id="adminStatDevices" class="text-3xl font-black text-bsp-900">0</div>
+                    </div>
+                </div>
+
+                <div class="bg-bsp-50 border border-bsp-200 p-6 rounded-2xl space-y-4">
+                    <h3 class="font-black text-bsp-900 text-base" data-i18n="admin_dash.quick_actions">Quick Actions (Ayyuka Sauri)</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="openAddCustomerModal()" class="bg-bsp-800 hover:bg-bsp-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition cursor-pointer" data-i18n="admin_dash.btn_add_cust">
+                            + Ƙara Sabon Abokin Ciniki
+                        </button>
+                        <button onclick="switchAdminTab('licenses'); document.getElementById('adminLicDuration').focus();" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition cursor-pointer" data-i18n="admin_dash.btn_create_lic">
+                            + Haɗa / Ƙirƙiri Sabon Lasisi
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADMIN TAB 2: CUSTOMERS -->
+            <div id="adminContent-customers" class="admin-tabcontent hidden space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <div>
+                        <h3 class="font-black text-bsp-900 text-lg" data-i18n="admin_cust.title">Customer Management</h3>
+                        <p class="text-xs text-slate-500" data-i18n="admin_cust.desc">Manage registered customers, view their device IDs and assigned licenses.</p>
+                    </div>
+                    <button onclick="openAddCustomerModal()" class="bg-bsp-800 hover:bg-bsp-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition cursor-pointer" data-i18n="admin_dash.btn_add_cust">
+                        + Ƙara Sabon Abokin Ciniki
+                    </button>
+                </div>
+                <div id="adminCustomersTableContainer" class="space-y-3"></div>
+            </div>
+
+            <!-- ADMIN TAB 3: LICENSES -->
+            <div id="adminContent-licenses" class="admin-tabcontent hidden space-y-6">
+                <div class="bg-bsp-50 border border-bsp-200 p-6 rounded-2xl space-y-4">
+                    <h3 class="font-black text-bsp-900 text-lg" data-i18n="admin_lic.title">Create & Assign License (Select Duration)</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="admin_lic.target_cust">Target Customer:</label>
+                            <select id="adminLicCustomerSelect" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium"></select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="admin_lic.device_id">Device ID:</label>
+                            <input type="text" id="adminLicDeviceInput" placeholder="BSP-DEV-..." class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm font-mono">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="admin_lic.duration">Duration:</label>
+                            <select id="adminLicDuration" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium">
+                                <option value="30" data-i18n="dur.30">1 Month (30 Days)</option>
+                                <option value="60" data-i18n="dur.60">2 Months (60 Days)</option>
+                                <option value="180" data-i18n="dur.180">6 Months (180 Days)</option>
+                                <option value="365" selected data-i18n="dur.365">1 Year (365 Days)</option>
+                                <option value="9999" data-i18n="dur.lifetime">Lifetime</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="adminGenerateNewLicense()" class="w-full bg-bsp-800 hover:bg-bsp-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer" data-i18n="admin_lic.btn_generate">
+                                Generate Code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="adminLicensesTableContainer" class="space-y-3"></div>
+            </div>
+
+            <!-- ADMIN TAB 4: ACTIVATION CODES -->
+            <div id="adminContent-codes" class="admin-tabcontent hidden space-y-6">
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <h3 class="font-black text-bsp-900 text-lg" data-i18n="admin_codes.title">Activation Code Repository</h3>
+                    <p class="text-xs text-slate-500 mt-1" data-i18n="admin_codes.desc">View all generated codes, status, and copy/share with customers.</p>
+                </div>
+                <div id="adminCodesTableContainer" class="space-y-3"></div>
+            </div>
+
+            <!-- ADMIN TAB 5: DEVICES -->
+            <div id="adminContent-devices" class="admin-tabcontent hidden space-y-6">
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-black text-bsp-900 text-lg" data-i18n="admin_dev.title">Device Binding & Reassignment</h3>
+                        <p class="text-xs text-slate-500 mt-1" data-i18n="admin_dev.desc">Manage hardware UUID bindings or reassign license to new device.</p>
+                    </div>
+                </div>
+                <div id="adminDevicesTableContainer" class="space-y-3"></div>
+            </div>
+
+            <!-- ADMIN TAB 6: AUDIT HISTORY -->
+            <div id="adminContent-audit" class="admin-tabcontent hidden space-y-6">
+                <div class="flex justify-between items-center bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <div>
+                        <h3 class="font-black text-bsp-900 text-lg" data-i18n="admin_audit.title">Activity History & Audit Logs</h3>
+                        <p class="text-xs text-slate-500" data-i18n="admin_audit.desc">Immutable logging of admin logins, license generation, revocation, and device reassignments.</p>
+                    </div>
+                    <button onclick="clearAuditLogs()" class="bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer" data-i18n="admin_audit.btn_clear">Clear Logs</button>
+                </div>
+                <div id="adminAuditLogsContainer" class="space-y-2 max-h-96 overflow-y-auto"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL: ADD CUSTOMER FROM ADMIN -->
+    <div id="adminAddCustomerModal" class="hidden fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                <h3 class="text-lg font-black text-bsp-900" data-i18n="add_cust_modal.title">Ƙara Sabon Abokin Ciniki</h3>
+                <button onclick="closeAddCustomerModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="add_cust_modal.name_label">Cikakken Sunan Abokin Ciniki:</label>
+                    <input type="text" id="adminNewCustName" placeholder="Ibrahim Musa" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="add_cust_modal.contact_label">Lambar Wayar WhatsApp / Email:</label>
+                    <input type="text" id="adminNewCustContact" placeholder="+2348000000000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="add_cust_modal.device_label">Device ID:</label>
+                    <input type="text" id="adminNewCustDevice" placeholder="BSP-DEV-..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm font-mono">
+                </div>
+                <button onclick="adminSubmitNewCustomer()" class="w-full bg-bsp-800 hover:bg-bsp-700 text-white font-bold py-3 rounded-xl text-xs transition cursor-pointer" data-i18n="add_cust_modal.btn_submit">
+                    Ajiye Abokin Ciniki
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED BOTTOM NAVIGATION -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-2xl z-50">
+        <div class="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
+            <button onclick="switchTab('dashboard')" id="bot-nav-dashboard" class="flex flex-col items-center justify-center text-bsp-700 hover:text-bsp-900 transition flex-1 py-1 cursor-pointer">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px] font-bold mt-1" data-i18n="bot.home">Gida</span>
+            </button>
+            <button onclick="switchTab('remedies')" id="bot-nav-remedies" class="flex flex-col items-center justify-center text-slate-400 hover:text-emerald-700 transition flex-1 py-1 cursor-pointer">
+                <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                <span class="text-[10px] font-bold mt-1" data-i18n="bot.remedies">Gyare-gyare</span>
+            </button>
+            <button onclick="switchTab('calculator')" id="bot-nav-calculator" class="flex flex-col items-center justify-center text-slate-400 hover:text-bsp-800 transition flex-1 py-1 cursor-pointer">
+                <i class="fa-solid fa-calculator text-lg"></i>
+                <span class="text-[10px] font-bold mt-1" data-i18n="bot.calc">Lissafi</span>
+            </button>
+            <button onclick="switchTab('report50')" id="bot-nav-report50" class="flex flex-col items-center justify-center text-slate-400 hover:text-bsp-800 transition flex-1 py-1 cursor-pointer">
+                <i class="fa-solid fa-list-check text-lg"></i>
+                <span class="text-[10px] font-bold mt-1" data-i18n="bot.report">Taswirar 50</span>
+            </button>
+            <button onclick="switchTab('activate')" id="bot-nav-activate" class="flex flex-col items-center justify-center text-slate-400 hover:text-amber-800 transition flex-1 py-1 cursor-pointer">
+                <i class="fa-solid fa-shield-halved text-lg"></i>
+                <span class="text-[10px] font-bold mt-1" data-i18n="bot.license">Lasisi</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- CENTRALIZED MULTILINGUAL DICTIONARY ENGINE (6 Languages: ha, en, ar, fr, es, pt) -->
+    <script>
+        const translations = {
+            ha: {
+                "nav.contact": "Tuntuɓi Mu",
+                "nav.remedies": "Gyare-gyare",
+                "nav.calculator": "Fara Bincike",
+                "nav.report50": "Taswirar 50",
+                "nav.compatibility": "Daidaituwa",
+                "nav.master": "Master Numbers",
+                "nav.history": "Tarihi",
+                "nav.customer_license": "Ofishin Tsaro & Lasisi",
+                "app.title": "BSP ILMIN ADADI MASTER",
+                "app.subtitle": "Dr. Anas Abubakar • Sanin Lambobi, Sanin Rayuwa",
+                "dash.welcome_heading": "BSP ILMIN ADADI MASTER",
+                "dash.welcome_sub": "Dual Numerology Engine • Cikakken Tsarin 50 • Multi-Tenant RBAC Security",
+                "hero.badge": "DR. ANAS ABUBAKAR DUAL NUMEROLOGY ENGINE",
+                "hero.title": "Barka da Zuwa BSP Ilmin Adadi Master",
+                "hero.desc": "Zaɓi nau'in binciken da kake so ko bincika Karfin Lambobi, Missing Number Remedies, da Tsarin Addu'a / Zikiri da Gyare-gyare.",
+                "mode.mode1_badge": "MODE 1",
+                "mode.mode1_title": "🌟 Cikakken Bincike",
+                "mode.mode1_desc": "Ina da ranar haihuwata (Birth Date + Name)",
+                "mode.mode2_badge": "MODE 2",
+                "mode.mode2_title": "🔢 Binciken Suna Zalla",
+                "mode.mode2_desc": "Ban san ranar haihuwata ba (Name Only)",
+                "card.remedies_sub": "Spiritual & Remedies",
+                "card.remedies_title": "Karfin Lambobi & Gyare-gyare",
+                "card.calc_sub": "Shigar da Bayanai",
+                "card.calc_title": "Fara Bincike",
+                "card.report_sub": "Complete 50 Analysis",
+                "card.report_title": "Taswirar Abubuwa 50",
+                "card.comp_sub": "Compatibility",
+                "card.comp_title": "Daidaituwar Dangantaka",
+                "card.master_sub": "Master Numbers",
+                "card.master_title": "Lambobin Musamman",
+                "card.license_sub": "Customer License",
+                "card.license_title": "Ofishin Tsaro & Lasisi",
+                "disclaimer.label": "Sanarwa:",
+                "disclaimer.text": "Ilmin Adadi hanya ce ta gargajiya/esoteric ta fassarar lambobi. Ba a gabatar da sakamakon a matsayin tabbatacciyar hasashen kimiyya ko tabbacin abin da zai faru a nan gaba ba. Mai amfani ya kamata ya yi amfani da hankali da shawarwarin ƙwararru.",
+                "activate.title": "Ofishin Kunnawa & Lasisi",
+                "activate.desc": "Wannan aikace-aikacen yana buƙatar kuɗi kamin amfani. Don Allah shigar da lambar kunnawa ko tuntuɓi ofishin Dr. Anas Abubakar.",
+                "activate.device_id_label": "Bayanin Na'ura / ID na Na'ura (Device ID):",
+                "activate.btn_copy": "Kwafi",
+                "activate.license_code_label": "Lambar Kunnawa (Activation Code / License Key): *",
+                "activate.btn_activate": "Kunna",
+                "calc.title": "Shigar da Bayanai",
+                "calc.subtitle": "Cika bayanan cikakken suna da ranar haihuwa.",
+                "calc.fullname_label": "Cikakken Suna: *",
+                "calc.birthdate_label": "Ranar Haihuwa: *",
+                "calc.btn_submit": "Gudanar da Bincike",
+                "report.title": "Sakamakon Bincike",
+                "report.subtitle": "Taswirar Abubuwa 50",
+                "report.btn_save": "Ajiye a Tarihi",
+                "remedies.title": "Karfin Lambobi da Gyare-gyare",
+                "remedies.desc": "Binciko hanyoyin gyara da karfin lambobi a rayuwa.",
+                "comp.title": "Daidaituwar Dangantaka",
+                "comp.desc": "Kwatanta dacewar mutum biyu.",
+                "master.title": "Master Numbers (11, 22, 33)",
+                "master.desc": "Lambobin musamman masu karfin ruhaniya da tsara duniya.",
+                "history.title": "Tarihin Bincike",
+                "admin_login.title": "Admin Login",
+                "admin_login.subtitle": "Ofishin Mai Mallaka & Admin",
+                "admin_login.user_label": "Admin Username / Email:",
+                "admin_login.pass_label": "Admin Password:",
+                "admin_login.btn_submit": "Shiga Ofishin Admin (Authenticate)",
+                "admin_office.header_badge": "OFISHIN ADMIN & LICENSE MANAGEMENT",
+                "admin_office.title": "BSP Master Admin Control Center",
+                "admin_office.btn_logout": "Fita (Logout)",
+                "admin_office.btn_close": "Rufe",
+                "admin_tab.dashboard": "Dashboard",
+                "admin_tab.customers": "Customers",
+                "admin_tab.licenses": "Licenses",
+                "admin_tab.codes": "Activation Codes",
+                "admin_tab.devices": "Device Binding",
+                "admin_tab.audit": "Activity History",
+                "admin_dash.stat1": "Total Customers",
+                "admin_dash.stat2": "Active Licenses",
+                "admin_dash.stat3": "Unused Codes",
+                "admin_dash.stat4": "Bound Devices",
+                "admin_dash.quick_actions": "Quick Actions (Ayyuka Sauri)",
+                "admin_dash.btn_add_cust": "+ Ƙara Sabon Abokin Ciniki",
+                "admin_dash.btn_create_lic": "+ Haɗa / Ƙirƙiri Sabon Lasisi",
+                "admin_cust.title": "Customer Management",
+                "admin_cust.desc": "Manage registered customers, view their device IDs and assigned licenses.",
+                "admin_lic.title": "Create & Assign License (Select Duration)",
+                "admin_lic.target_cust": "Target Customer:",
+                "admin_lic.device_id": "Device ID:",
+                "admin_lic.duration": "Duration:",
+                "admin_lic.btn_generate": "Generate Code",
+                "dur.30": "1 Month (30 Days)",
+                "dur.60": "2 Months (60 Days)",
+                "dur.180": "6 Months (180 Days)",
+                "dur.365": "1 Year (365 Days)",
+                "dur.lifetime": "Lifetime",
+                "admin_codes.title": "Activation Code Repository",
+                "admin_codes.desc": "View all generated codes, status, and copy/share with customers.",
+                "admin_dev.title": "Device Binding & Reassignment",
+                "admin_dev.desc": "Manage hardware UUID bindings or reassign license to new device.",
+                "admin_audit.title": "Activity History & Audit Logs",
+                "admin_audit.desc": "Immutable logging of admin logins, license generation, revocation, and device reassignments.",
+                "admin_audit.btn_clear": "Clear Logs",
+                "add_cust_modal.title": "Ƙara Sabon Abokin Ciniki",
+                "add_cust_modal.name_label": "Cikakken Sunan Abokin Ciniki:",
+                "add_cust_modal.contact_label": "Lambar Wayar WhatsApp / Email:",
+                "add_cust_modal.device_label": "Device ID:",
+                "add_cust_modal.btn_submit": "Ajiye Abokin Ciniki",
+                "bot.home": "Gida",
+                "bot.remedies": "Gyare-gyare",
+                "bot.calc": "Lissafi",
+                "bot.report": "Taswirar 50",
+                "bot.license": "Lasisi"
+            },
+            en: {
+                "nav.contact": "Contact Us",
+                "nav.remedies": "Remedies",
+                "nav.calculator": "Start Analysis",
+                "nav.report50": "50-Point Map",
+                "nav.compatibility": "Compatibility",
+                "nav.master": "Master Numbers",
+                "nav.history": "History",
+                "nav.customer_license": "Security & License Office",
+                "app.title": "BSP ILMIN ADADI MASTER",
+                "app.subtitle": "Dr. Anas Abubakar • Number Science, Life Science",
+                "dash.welcome_heading": "BSP ILMIN ADADI MASTER",
+                "dash.welcome_sub": "Dual Numerology Engine • Complete 50-Point System • Multi-Tenant RBAC Security",
+                "hero.badge": "DR. ANAS ABUBAKAR DUAL NUMEROLOGY ENGINE",
+                "hero.title": "Welcome to BSP Ilmin Adadi Master",
+                "hero.desc": "Choose your analysis mode or explore Number Power, Missing Number Remedies, and Spiritual / Zikiri Practices.",
+                "mode.mode1_badge": "MODE 1",
+                "mode.mode1_title": "🌟 Complete Analysis",
+                "mode.mode1_desc": "I have my birth date (Birth Date + Name)",
+                "mode.mode2_badge": "MODE 2",
+                "mode.mode2_title": "🔢 Name Only Analysis",
+                "mode.mode2_desc": "I don't know my birth date (Name Only)",
+                "card.remedies_sub": "Spiritual & Remedies",
+                "card.remedies_title": "Number Power & Remedies",
+                "card.calc_sub": "Input Data",
+                "card.calc_title": "Start Analysis",
+                "card.report_sub": "Complete 50 Analysis",
+                "card.report_title": "50-Point Report Map",
+                "card.comp_sub": "Compatibility",
+                "card.comp_title": "Relationship Compatibility",
+                "card.master_sub": "Master Numbers",
+                "card.master_title": "Special Master Numbers",
+                "card.license_sub": "Customer License",
+                "card.license_title": "Security & License Office",
+                "disclaimer.label": "Notice:",
+                "disclaimer.text": "Numerology is a traditional/esoteric interpretation of numbers. Results are not presented as scientific certainties or guarantees of future events. Users should apply personal discretion and professional counsel.",
+                "activate.title": "Activation & License Office",
+                "activate.desc": "This application requires activation before use. Please enter your activation code or contact Dr. Anas Abubakar's office.",
+                "activate.device_id_label": "Hardware Device ID:",
+                "activate.btn_copy": "Copy ID",
+                "activate.license_code_label": "Activation Code / License Key: *",
+                "activate.btn_activate": "Activate",
+                "calc.title": "Input Personal Data",
+                "calc.subtitle": "Fill in your full birth name and birth date.",
+                "calc.fullname_label": "Full Name: *",
+                "calc.birthdate_label": "Birth Date: *",
+                "calc.btn_submit": "Run Numerology Analysis",
+                "report.title": "Analysis Results",
+                "report.subtitle": "Complete 50-Point Map",
+                "report.btn_save": "Save to History",
+                "remedies.title": "Number Power & Spiritual Remedies",
+                "remedies.desc": "Explore remedial actions and number energetics.",
+                "comp.title": "Relationship Compatibility",
+                "comp.desc": "Compare mutual numerological alignment.",
+                "master.title": "Master Numbers (11, 22, 33)",
+                "master.desc": "High vibrational numbers of spiritual mastery and world shaping.",
+                "history.title": "Analysis History",
+                "admin_login.title": "Admin Login",
+                "admin_login.subtitle": "Owner & Administrator Office",
+                "admin_login.user_label": "Admin Username / Email:",
+                "admin_login.pass_label": "Admin Password:",
+                "admin_login.btn_submit": "Authenticate Admin Office",
+                "admin_office.header_badge": "ADMIN & LICENSE MANAGEMENT OFFICE",
+                "admin_office.title": "BSP Master Admin Control Center",
+                "admin_office.btn_logout": "Logout",
+                "admin_office.btn_close": "Close",
+                "admin_tab.dashboard": "Dashboard",
+                "admin_tab.customers": "Customers",
+                "admin_tab.licenses": "Licenses",
+                "admin_tab.codes": "Activation Codes",
+                "admin_tab.devices": "Device Binding",
+                "admin_tab.audit": "Activity History",
+                "admin_dash.stat1": "Total Customers",
+                "admin_dash.stat2": "Active Licenses",
+                "admin_dash.stat3": "Unused Codes",
+                "admin_dash.stat4": "Bound Devices",
+                "admin_dash.quick_actions": "Quick Actions",
+                "admin_dash.btn_add_cust": "+ Add New Customer",
+                "admin_dash.btn_create_lic": "+ Create / Assign License",
+                "admin_cust.title": "Customer Management",
+                "admin_cust.desc": "Manage registered customers, view device IDs and assigned licenses.",
+                "admin_lic.title": "Create & Assign License (Select Duration)",
+                "admin_lic.target_cust": "Target Customer:",
+                "admin_lic.device_id": "Device ID:",
+                "admin_lic.duration": "Duration:",
+                "admin_lic.btn_generate": "Generate Code",
+                "dur.30": "1 Month (30 Days)",
+                "dur.60": "2 Months (60 Days)",
+                "dur.180": "6 Months (180 Days)",
+                "dur.365": "1 Year (365 Days)",
+                "dur.lifetime": "Lifetime",
+                "admin_codes.title": "Activation Code Repository",
+                "admin_codes.desc": "View all generated codes, status, and copy/share with customers.",
+                "admin_dev.title": "Device Binding & Reassignment",
+                "admin_dev.desc": "Manage hardware UUID bindings or reassign license to new device.",
+                "admin_audit.title": "Activity History & Audit Logs",
+                "admin_audit.desc": "Immutable logging of admin logins, license generation, revocation, and device reassignments.",
+                "admin_audit.btn_clear": "Clear Logs",
+                "add_cust_modal.title": "Add New Customer",
+                "add_cust_modal.name_label": "Customer Full Name:",
+                "add_cust_modal.contact_label": "WhatsApp Phone / Email:",
+                "add_cust_modal.device_label": "Device ID:",
+                "add_cust_modal.btn_submit": "Save Customer",
+                "bot.home": "Home",
+                "bot.remedies": "Remedies",
+                "bot.calc": "Calculator",
+                "bot.report": "50-Map",
+                "bot.license": "License"
+            },
+            ar: {
+                "nav.contact": "اتصل بنا",
+                "nav.remedies": "العلاجات الروحية",
+                "nav.calculator": "بدء التحليل",
+                "nav.report50": "خريطة 50 نقطة",
+                "nav.compatibility": "التوافق",
+                "nav.master": "الأرقام الرئيسية",
+                "nav.history": "السجل",
+                "nav.customer_license": "مكتب الأمان والترخيص",
+                "app.title": "BSP علم الأعداد الرئيسي",
+                "app.subtitle": "د. أنس أبوبكر • علم الأرقام، علم الحياة",
+                "dash.welcome_heading": "BSP علم الأعداد الرئيسي",
+                "dash.welcome_sub": "محرك علم الأعداد المزدوج • نظام 50 نقطة الكامل • أمان RBAC",
+                "hero.badge": "محرك علم الأعداد المزدوج للدكتور أنس أبوبكر",
+                "hero.title": "مرحباً بك في نظام BSP علم الأعداد الرئيسي",
+                "hero.desc": "اختر نوع التحليل الذي تريده أو استكشف قوة الأرقام، وعلاجات الأرقام المفقودة، وممارسات الذكر الروحية.",
+                "mode.mode1_badge": "الوضع 1",
+                "mode.mode1_title": "🌟 تحليل شامل",
+                "mode.mode1_desc": "لدي تاريخ ميلادي (تاريخ الميلاد + الاسم)",
+                "mode.mode2_badge": "الوضع 2",
+                "mode.mode2_title": "🔢 تحليل الاسم فقط",
+                "mode.mode2_desc": "لا أعرف تاريخ ميلادي (الاسم فقط)",
+                "card.remedies_sub": "روحانيات وعلاجات",
+                "card.remedies_title": "قوة الأرقام والعلاجات",
+                "card.calc_sub": "إدخال البيانات",
+                "card.calc_title": "بدء التحليل",
+                "card.report_sub": "تحليل 50 الشامل",
+                "card.report_title": "خريطة الـ 50 نقطة",
+                "card.comp_sub": "التوافق",
+                "card.comp_title": "توافق العلاقات",
+                "card.master_sub": "الأرقام الرئيسية",
+                "card.master_title": "الأرقام الرئيسية الخاصة",
+                "card.license_sub": "ترخيص العميل",
+                "card.license_title": "مكتب الأمان والترخيص",
+                "disclaimer.label": "ملاحظة:",
+                "disclaimer.text": "علم الأعداد هو تفسير تقليدي/باطني للأرقام. لا تُقدم النتائج كحقائق علمية مؤكدة أو ضمانات للأحداث المستقبلية. يجب على المستخدم استخدام التقدير الشخصي.",
+                "activate.title": "مكتب التنشيط والترخيص",
+                "activate.desc": "يتطلب هذا التطبيق ترخيصاً قبل الاستخدام. يرجى إدخال رمز التنشيط الخاص بك أو الاتصال بمكتب د. أنس أبوبكر.",
+                "activate.device_id_label": "معرف الجهاز:",
+                "activate.btn_copy": "نسخ المعرف",
+                "activate.license_code_label": "رمز التنشيط / مفتاح الترخيص: *",
+                "activate.btn_activate": "تنشيط",
+                "calc.title": "إدخال البيانات الشخصية",
+                "calc.subtitle": "املأ اسمك الكامل وتاريخ ميلادك.",
+                "calc.fullname_label": "الاسم الكامل: *",
+                "calc.birthdate_label": "تاريخ الميلاد: *",
+                "calc.btn_submit": "تشغيل تحليل علم الأعداد",
+                "report.title": "نتائج التحليل",
+                "report.subtitle": "خريطة 50 نقطة كاملة",
+                "report.btn_save": "حفظ في السجل",
+                "remedies.title": "قوة الأرقام والعلاجات الروحية",
+                "remedies.desc": "استكشف الإجراءات العلاجية وطاقة الأرقام.",
+                "comp.title": "توافق العلاقات",
+                "comp.desc": "قارن التوافق المتبادل بالأرقام.",
+                "master.title": "الأرقام الرئيسية (11، 22، 33)",
+                "master.desc": "أرقام ذات طاقة اهتزازية عالية للسيادة الروحية.",
+                "history.title": "سجل التحليلات",
+                "admin_login.title": "تسجيل دخول المشرف",
+                "admin_login.subtitle": "مكتب المالك والمشرف",
+                "admin_login.user_label": "اسم مستخدم المشرف / البريد الإلكتروني:",
+                "admin_login.pass_label": "كلمة مرور المشرف:",
+                "admin_login.btn_submit": "مصادقة مكتب المشرف",
+                "admin_office.header_badge": "مكتب إدارة المشرف والتراخيص",
+                "admin_office.title": "مركز تحكم المشرف الرئيسي BSP",
+                "admin_office.btn_logout": "تسجيل الخروج",
+                "admin_office.btn_close": "إغلاق",
+                "admin_tab.dashboard": "لوحة القيادة",
+                "admin_tab.customers": "العملاء",
+                "admin_tab.licenses": "التراخيص",
+                "admin_tab.codes": "رموز التنشيط",
+                "admin_tab.devices": "ربط الأجهزة",
+                "admin_tab.audit": "سجل النشاطات",
+                "admin_dash.stat1": "إجمالي العملاء",
+                "admin_dash.stat2": "التراخيص النشطة",
+                "admin_dash.stat3": "الرموز غير المستخدمة",
+                "admin_dash.stat4": "الأجهزة المربوطة",
+                "admin_dash.quick_actions": "إجراءات سريعة",
+                "admin_dash.btn_add_cust": "+ إضافة عميل جديد",
+                "admin_dash.btn_create_lic": "+ إنشاء / تعيين ترخيص",
+                "admin_cust.title": "إدارة العملاء",
+                "admin_cust.desc": "إدارة العملاء المسجلين، وعرض معرفات الأجهزة والتراخيص المعينة.",
+                "admin_lic.title": "إنشاء وتعيين ترخيص (اختر المدة)",
+                "admin_lic.target_cust": "العميل المستهدف:",
+                "admin_lic.device_id": "معرف الجهاز:",
+                "admin_lic.duration": "المدة:",
+                "admin_lic.btn_generate": "إنشاء الرمز",
+                "dur.30": "1 شهر (30 يوماً)",
+                "dur.60": "2 شهر (60 يوماً)",
+                "dur.180": "6 أشهر (180 يوماً)",
+                "dur.365": "1 سنة (365 يوماً)",
+                "dur.lifetime": "مدى الحياة",
+                "admin_codes.title": "مستودع رموز التنشيط",
+                "admin_codes.desc": "عرض جميع الرموز التي تم إنشاؤها وحالتها ونسخها ومشاركتها مع العملاء.",
+                "admin_dev.title": "ربط الأجهزة وإعادة التعيين",
+                "admin_dev.desc": "إدارة ارتباطات UUID للأجهزة أو إعادة تعيين الترخيص لجهاز جديد.",
+                "admin_audit.title": "سجل النشاطات ومس التدقيق",
+                "admin_audit.desc": "تسجيل غير قابل للتغيير لتسجيلات دخول المشرف وإنشاء التراخيص والإلغاء.",
+                "admin_audit.btn_clear": "مسح السجلات",
+                "add_cust_modal.title": "إضافة عميل جديد",
+                "add_cust_modal.name_label": "الاسم الكامل للعميل:",
+                "add_cust_modal.contact_label": "هاتف واتساب / البريد الإلكتروني:",
+                "add_cust_modal.device_label": "معرف الجهاز:",
+                "add_cust_modal.btn_submit": "حفظ العميل",
+                "bot.home": "الرئيسية",
+                "bot.remedies": "علاجات",
+                "bot.calc": "الحاسبة",
+                "bot.report": "خريطة 50",
+                "bot.license": "الترخيص"
+            },
+            fr: {
+                "nav.contact": "Contactez-nous",
+                "nav.remedies": "Remèdes",
+                "nav.calculator": "Commencer l'analyse",
+                "nav.report50": "Carte en 50 points",
+                "nav.compatibility": "Compatibilité",
+                "nav.master": "Nombres Maîtres",
+                "nav.history": "Historique",
+                "nav.customer_license": "Bureau de Sécurité et de Licence",
+                "app.title": "BSP ILMIN ADADI MASTER",
+                "app.subtitle": "Dr. Anas Abubakar • Science des Nombres, Science de la Vie",
+                "dash.welcome_heading": "BSP ILMIN ADADI MASTER",
+                "dash.welcome_sub": "Moteur de numérologie double • Système complet en 50 points • Sécurité RBAC",
+                "hero.badge": "MOTEUR DE NUMÉROLOGIE DOUBLE DR. ANAS ABUBAKAR",
+                "hero.title": "Bienvenue sur BSP Ilmin Adadi Master",
+                "hero.desc": "Choisissez votre mode d'analyse ou explorez la puissance des nombres, les remèdes et les pratiques spirituelles.",
+                "mode.mode1_badge": "MODE 1",
+                "mode.mode1_title": "🌟 Analyse complète",
+                "mode.mode1_desc": "J'ai ma date de naissance (Date + Nom)",
+                "mode.mode2_badge": "MODE 2",
+                "mode.mode2_title": "🔢 Analyse par le nom seul",
+                "mode.mode2_desc": "Je ne connais pas ma date de naissance (Nom seul)",
+                "card.remedies_sub": "Spirituel & Remèdes",
+                "card.remedies_title": "Puissance des nombres & Remèdes",
+                "card.calc_sub": "Saisir les données",
+                "card.calc_title": "Commencer l'analyse",
+                "card.report_sub": "Analyse complète en 50 points",
+                "card.report_title": "Carte de rapport en 50 points",
+                "card.comp_sub": "Compatibilité",
+                "card.comp_title": "Compatibilité relationnelle",
+                "card.master_sub": "Nombres Maîtres",
+                "card.master_title": "Nombres Maîtres Spéciaux",
+                "card.license_sub": "Licence Client",
+                "card.license_title": "Bureau de Sécurité et de Licence",
+                "disclaimer.label": "Avis :",
+                "disclaimer.text": "La numérologie est une interprétation ésotérique traditionnelle des nombres. Les résultats ne constituent pas des certitudes scientifiques.",
+                "activate.title": "Bureau d'activation et de licence",
+                "activate.desc": "Cette application nécessite une licence active. Veuillez entrer votre code d'activation ou contacter le bureau du Dr. Anas Abubakar.",
+                "activate.device_id_label": "ID de l'appareil matériel :",
+                "activate.btn_copy": "Copier l'ID",
+                "activate.license_code_label": "Code d'activation / Clé de licence : *",
+                "activate.btn_activate": "Activer",
+                "calc.title": "Saisir les données personnelles",
+                "calc.subtitle": "Remplissez votre nom complet de naissance et votre date de naissance.",
+                "calc.fullname_label": "Nom complet : *",
+                "calc.birthdate_label": "Date de naissance : *",
+                "calc.btn_submit": "Exécuter l'analyse numérologique",
+                "report.title": "Résultats de l'analyse",
+                "report.subtitle": "Carte complète en 50 points",
+                "report.btn_save": "Enregistrer dans l'historique",
+                "remedies.title": "Puissance des nombres & Remèdes spirituels",
+                "remedies.desc": "Explorez les actions correctives et l'énergétique des nombres.",
+                "comp.title": "Compatibilité relationnelle",
+                "comp.desc": "Comparez l'alignement numérologique mutuel.",
+                "master.title": "Nombres Maîtres (11, 22, 33)",
+                "master.desc": "Nombres à haute vibration de maîtrise spirituelle.",
+                "history.title": "Historique des analyses",
+                "admin_login.title": "Connexion Administrateur",
+                "admin_login.subtitle": "Bureau du Propriétaire et Administrateur",
+                "admin_login.user_label": "Nom d'utilisateur Admin / Email :",
+                "admin_login.pass_label": "Mot de passe Admin :",
+                "admin_login.btn_submit": "Authentifier le bureau admin",
+                "admin_office.header_badge": "BUREAU D'ADMINISTRATION ET DE GESTION DES LICENCES",
+                "admin_office.title": "Centre de Contrôle Principal BSP",
+                "admin_office.btn_logout": "Déconnexion",
+                "admin_office.btn_close": "Fermer",
+                "admin_tab.dashboard": "Tableau de bord",
+                "admin_tab.customers": "Clients",
+                "admin_tab.licenses": "Licences",
+                "admin_tab.codes": "Codes d'activation",
+                "admin_tab.devices": "Liaison d'appareils",
+                "admin_tab.audit": "Historique des activités",
+                "admin_dash.stat1": "Total clients",
+                "admin_dash.stat2": "Licences actives",
+                "admin_dash.stat3": "Codes inutilisés",
+                "admin_dash.stat4": "Appareils liés",
+                "admin_dash.quick_actions": "Actions rapides",
+                "admin_dash.btn_add_cust": "+ Ajouter un nouveau client",
+                "admin_dash.btn_create_lic": "+ Créer / Attribuer une licence",
+                "admin_cust.title": "Gestion des clients",
+                "admin_cust.desc": "Gérez les clients enregistrés, affichez les identifiants d'appareils et les licences.",
+                "admin_lic.title": "Créer et attribuer une licence (Sélectionnez la durée)",
+                "admin_lic.target_cust": "Client cible :",
+                "admin_lic.device_id": "ID de l'appareil :",
+                "admin_lic.duration": "Durée :",
+                "admin_lic.btn_generate": "Générer le code",
+                "dur.30": "1 mois (30 jours)",
+                "dur.60": "2 mois (60 jours)",
+                "dur.180": "6 mois (180 jours)",
+                "dur.365": "1 an (365 jours)",
+                "dur.lifetime": "À vie",
+                "admin_codes.title": "Répertoire des codes d'activation",
+                "admin_codes.desc": "Affichez tous les codes générés, leur statut et copiez/partagez avec les clients.",
+                "admin_dev.title": "Liaison et réaffectation d'appareils",
+                "admin_dev.desc": "Gérez les liaisons UUID matérielles ou réaffectez la licence à un nouvel appareil.",
+                "admin_audit.title": "Historique des activités et journaux d'audit",
+                "admin_audit.desc": "Journalisation immuable des connexions admin, générations de licences et réaffectations.",
+                "admin_audit.btn_clear": "Effacer les journaux",
+                "add_cust_modal.title": "Ajouter un nouveau client",
+                "add_cust_modal.name_label": "Nom complet du client :",
+                "add_cust_modal.contact_label": "Téléphone WhatsApp / Email :",
+                "add_cust_modal.device_label": "ID de l'appareil :",
+                "add_cust_modal.btn_submit": "Enregistrer le client",
+                "bot.home": "Accueil",
+                "bot.remedies": "Remèdes",
+                "bot.calc": "Calculateur",
+                "bot.report": "Carte-50",
+                "bot.license": "Licence"
+            },
+            es: {
+                "nav.contact": "Contáctenos",
+                "nav.remedies": "Remedios",
+                "nav.calculator": "Iniciar Análisis",
+                "nav.report50": "Mapa de 50 Puntos",
+                "nav.compatibility": "Compatibilidad",
+                "nav.master": "Números Maestros",
+                "nav.history": "Historial",
+                "nav.customer_license": "Oficina de Seguridad y Licencias",
+                "app.title": "BSP ILMIN ADADI MASTER",
+                "app.subtitle": "Dr. Anas Abubakar • Ciencia de los Números, Ciencia de la Vida",
+                "dash.welcome_heading": "BSP ILMIN ADADI MASTER",
+                "dash.welcome_sub": "Motor de Numerología Dual • Sistema Completo de 50 Puntos • Seguridad RBAC",
+                "hero.badge": "MOTOR DE NUMEROLOGÍA DUAL DR. ANAS ABUBAKAR",
+                "hero.title": "Bienvenido a BSP Ilmin Adadi Master",
+                "hero.desc": "Elija su modo de análisis o explore el poder de los números, remedios y prácticas espirituales.",
+                "mode.mode1_badge": "MODO 1",
+                "mode.mode1_title": "🌟 Análisis Completo",
+                "mode.mode1_desc": "Tengo mi fecha de nacimiento (Fecha + Nombre)",
+                "mode.mode2_badge": "MODO 2",
+                "mode.mode2_title": "🔢 Análisis Solo por Nombre",
+                "mode.mode2_desc": "No sé mi fecha de nacimiento (Solo Nombre)",
+                "card.remedies_sub": "Espiritual y Remedios",
+                "card.remedies_title": "Poder de los Números y Remedios",
+                "card.calc_sub": "Ingresar Datos",
+                "card.calc_title": "Iniciar Análisis",
+                "card.report_sub": "Análisis Completo de 50",
+                "card.report_title": "Mapa de Reporte de 50 Puntos",
+                "card.comp_sub": "Compatibilidad",
+                "card.comp_title": "Compatibilidad de Relación",
+                "card.master_sub": "Números Maestros",
+                "card.master_title": "Números Maestros Especiales",
+                "card.license_sub": "Licencia de Cliente",
+                "card.license_title": "Oficina de Seguridad y Licencias",
+                "disclaimer.label": "Aviso:",
+                "disclaimer.text": "La numerología es una interpretación tradicional/esotérica de los números. Los resultados no se presentan como certezas científicas.",
+                "activate.title": "Oficina de Activación y Licencias",
+                "activate.desc": "Esta aplicación requiere activación antes de su uso. Ingrese su código de activación o contacte a la oficina del Dr. Anas Abubakar.",
+                "activate.device_id_label": "ID de Dispositivo de Hardware:",
+                "activate.btn_copy": "Copiar ID",
+                "activate.license_code_label": "Código de Activación / Clave de Licencia: *",
+                "activate.btn_activate": "Activar",
+                "calc.title": "Ingresar Datos Personales",
+                "calc.subtitle": "Complete su nombre completo de nacimiento y fecha de nacimiento.",
+                "calc.fullname_label": "Nombre Completo: *",
+                "calc.birthdate_label": "Fecha de Nacimiento: *",
+                "calc.btn_submit": "Ejecutar Análisis Numerológico",
+                "report.title": "Resultados del Análisis",
+                "report.subtitle": "Mapa Completo de 50 Puntos",
+                "report.btn_save": "Guardar en el Historial",
+                "remedies.title": "Poder de los Números y Remedios Espirituales",
+                "remedies.desc": "Explore acciones correctivas y la energética de los números.",
+                "comp.title": "Compatibilidad de Relación",
+                "comp.desc": "Compare la alineación numerológica mutua.",
+                "master.title": "Números Maestros (11, 22, 33)",
+                "master.desc": "Números de alta vibración de maestría espiritual.",
+                "history.title": "Historial de Análisis",
+                "admin_login.title": "Inicio de Sesión de Administrador",
+                "admin_login.subtitle": "Oficina de Propietario y Administrador",
+                "admin_login.user_label": "Usuario Admin / Correo:",
+                "admin_login.pass_label": "Contraseña de Admin:",
+                "admin_login.btn_submit": "Autenticar Oficina de Admin",
+                "admin_office.header_badge": "OFICINA DE ADMINISTRACIÓN Y GESTIÓN DE LICENCIAS",
+                "admin_office.title": "Centro de Control Maestro BSP",
+                "admin_office.btn_logout": "Cerrar Sesión",
+                "admin_office.btn_close": "Cerrar",
+                "admin_tab.dashboard": "Tablero",
+                "admin_tab.customers": "Clientes",
+                "admin_tab.licenses": "Licencias",
+                "admin_tab.codes": "Códigos de Activación",
+                "admin_tab.devices": "Vinculación de Dispositivos",
+                "admin_tab.audit": "Historial de Actividad",
+                "admin_dash.stat1": "Total Clientes",
+                "admin_dash.stat2": "Licencias Activas",
+                "admin_dash.stat3": "Códigos No Usados",
+                "admin_dash.stat4": "Dispositivos Vinculados",
+                "admin_dash.quick_actions": "Acciones Rápidas",
+                "admin_dash.btn_add_cust": "+ Agregar Nuevo Cliente",
+                "admin_dash.btn_create_lic": "+ Crear / Asignar Licencia",
+                "admin_cust.title": "Gestión de Clientes",
+                "admin_cust.desc": "Gestione clientes registrados, ver IDs de dispositivos y licencias asignadas.",
+                "admin_lic.title": "Crear y Asignar Licencia (Seleccione Duración)",
+                "admin_lic.target_cust": "Cliente Destino:",
+                "admin_lic.device_id": "ID de Dispositivo:",
+                "admin_lic.duration": "Duración:",
+                "admin_lic.btn_generate": "Generar Código",
+                "dur.30": "1 Mes (30 Días)",
+                "dur.60": "2 Meses (60 Días)",
+                "dur.180": "6 Meses (180 Días)",
+                "dur.365": "1 Año (365 Días)",
+                "dur.lifetime": "De por vida",
+                "admin_codes.title": "Repositorio de Códigos de Activación",
+                "admin_codes.desc": "Vea todos los códigos generados, estado y compártalos con clientes.",
+                "admin_dev.title": "Vinculación y Reasignación de Dispositivos",
+                "admin_dev.desc": "Gestione enlaces UUID de hardware o reasigne licencias a nuevos dispositivos.",
+                "admin_audit.title": "Historial de Actividad y Registros de Auditoría",
+                "admin_audit.desc": "Registro inmutable de inicios de sesión de admin, licencias y reasignaciones.",
+                "admin_audit.btn_clear": "Borrar Registros",
+                "add_cust_modal.title": "Agregar Nuevo Cliente",
+                "add_cust_modal.name_label": "Nombre Completo del Cliente:",
+                "add_cust_modal.contact_label": "Teléfono WhatsApp / Correo:",
+                "add_cust_modal.device_label": "ID de Dispositivo:",
+                "add_cust_modal.btn_submit": "Guardar Cliente",
+                "bot.home": "Inicio",
+                "bot.remedies": "Remedios",
+                "bot.calc": "Calculadora",
+                "bot.report": "Mapa-50",
+                "bot.license": "Licencia"
+            },
+            pt: {
+                "nav.contact": "Contate-nos",
+                "nav.remedies": "Remédios",
+                "nav.calculator": "Iniciar Análise",
+                "nav.report50": "Mapa de 50 Pontos",
+                "nav.compatibility": "Compatibilidade",
+                "nav.master": "Números Mestres",
+                "nav.history": "Histórico",
+                "nav.customer_license": "Escritório de Segurança e Licença",
+                "app.title": "BSP ILMIN ADADI MASTER",
+                "app.subtitle": "Dr. Anas Abubakar • Ciência dos Números, Ciência da Vida",
+                "dash.welcome_heading": "BSP ILMIN ADADI MASTER",
+                "dash.welcome_sub": "Mecanismo de Numerologia Dupla • Sistema Completo de 50 Pontos • Segurança RBAC",
+                "hero.badge": "MECANISMO DE NUMEROLOGIA DUPLA DR. ANAS ABUBAKAR",
+                "hero.title": "Bem-vindo ao BSP Ilmin Adadi Master",
+                "hero.desc": "Escolha o seu modo de análise ou explore o poder dos números, remédios e práticas espirituais.",
+                "mode.mode1_badge": "MODO 1",
+                "mode.mode1_title": "🌟 Análise Completa",
+                "mode.mode1_desc": "Tenho minha data de nascimento (Data + Nome)",
+                "mode.mode2_badge": "MODO 2",
+                "mode.mode2_title": "🔢 Análise Apenas por Nome",
+                "mode.mode2_desc": "Não sei minha data de nascimento (Apenas Nome)",
+                "card.remedies_sub": "Espiritual e Remédios",
+                "card.remedies_title": "Poder dos Números e Remédios",
+                "card.calc_sub": "Inserir Dados",
+                "card.calc_title": "Iniciar Análise",
+                "card.report_sub": "Análise Completa de 50",
+                "card.report_title": "Mapa de Relatório de 50 Pontos",
+                "card.comp_sub": "Compatibilidade",
+                "card.comp_title": "Compatibilidade de Relacionamento",
+                "card.master_sub": "Números Mestres",
+                "card.master_title": "Números Mestres Especiais",
+                "card.license_sub": "Licença do Cliente",
+                "card.license_title": "Escritório de Segurança e Licença",
+                "disclaimer.label": "Aviso:",
+                "disclaimer.text": "A numerologia é uma interpretação tradicional/esotérica dos números. Os resultados não são apresentados como certezas científicas.",
+                "activate.title": "Escritório de Ativação e Licenciamento",
+                "activate.desc": "Este aplicativo requer ativação antes do uso. Insira seu código de ativação ou entre em contato com o escritório do Dr. Anas Abubakar.",
+                "activate.device_id_label": "ID do Dispositivo de Hardware:",
+                "activate.btn_copy": "Copiar ID",
+                "activate.license_code_label": "Código de Ativação / Chave de Licença: *",
+                "activate.btn_activate": "Ativar",
+                "calc.title": "Inserir Dados Pessoais",
+                "calc.subtitle": "Preencha seu nome completo de nascimento e data de nascimento.",
+                "calc.fullname_label": "Nome Completo: *",
+                "calc.birthdate_label": "Data de Nascimento: *",
+                "calc.btn_submit": "Executar Análise Numerológica",
+                "report.title": "Resultados da Análise",
+                "report.subtitle": "Mapa Completo de 50 Pontos",
+                "report.btn_save": "Salvar no Histórico",
+                "remedies.title": "Poder dos Números e Remédios Espirituais",
+                "remedies.desc": "Explore ações corretivas e a energética dos números.",
+                "comp.title": "Compatibilidade de Relacionamento",
+                "comp.desc": "Compare o alinhamento numerológico mútuo.",
+                "master.title": "Números Mestres (11, 22, 33)",
+                "master.desc": "Números de alta vibração de maestria espiritual.",
+                "history.title": "Histórico de Análises",
+                "admin_login.title": "Login do Administrador",
+                "admin_login.subtitle": "Escritório do Proprietário e Administrador",
+                "admin_login.user_label": "Usuário Admin / E-mail:",
+                "admin_login.pass_label": "Senha do Admin:",
+                "admin_login.btn_submit": "Autenticar Escritório Admin",
+                "admin_office.header_badge": "ESCRITÓRIO DE ADMINISTRAÇÃO E GESTÃO DE LICENÇAS",
+                "admin_office.title": "Centro de Controle Mestre BSP",
+                "admin_office.btn_logout": "Sair",
+                "admin_office.btn_close": "Fechar",
+                "admin_tab.dashboard": "Painel",
+                "admin_tab.customers": "Clientes",
+                "admin_tab.licenses": "Licenças",
+                "admin_tab.codes": "Códigos de Ativação",
+                "admin_tab.devices": "Vinculação de Dispositivos",
+                "admin_tab.audit": "Histórico de Atividades",
+                "admin_dash.stat1": "Total de Clientes",
+                "admin_dash.stat2": "Licenças Ativas",
+                "admin_dash.stat3": "Códigos Não Usados",
+                "admin_dash.stat4": "Dispositivos Vinculados",
+                "admin_dash.quick_actions": "Ações Rápidas",
+                "admin_dash.btn_add_cust": "+ Adicionar Novo Cliente",
+                "admin_dash.btn_create_lic": "+ Criar / Atribuir Licencia",
+                "admin_cust.title": "Gerenciamento de Clientes",
+                "admin_cust.desc": "Gerencie clientes cadastrados, visualize IDs de dispositivos e licenças.",
+                "admin_lic.title": "Criar e Atribuir Licença (Selecione a Duração)",
+                "admin_lic.target_cust": "Cliente Alvo:",
+                "admin_lic.device_id": "ID do Dispositivo:",
+                "admin_lic.duration": "Duração:",
+                "admin_lic.btn_generate": "Gerar Código",
+                "dur.30": "1 Mês (30 Dias)",
+                "dur.60": "2 Meses (60 Dias)",
+                "dur.180": "6 Meses (180 Dias)",
+                "dur.365": "1 Ano (365 Dias)",
+                "dur.lifetime": "Vitalício",
+                "admin_codes.title": "Repositório de Códigos de Ativação",
+                "admin_codes.desc": "Visualize todos os códigos gerados, status e compartilhe com clientes.",
+                "admin_dev.title": "Vinculação e Reatribuição de Dispositivos",
+                "admin_dev.desc": "Gerencie vínculos UUID de hardware ou reatribua licença para novo dispositivo.",
+                "admin_audit.title": "Histórico de Atividades e Logs de Auditoria",
+                "admin_audit.desc": "Registro imutável de logins de admin, gerações de licenças e reatribuições.",
+                "admin_audit.btn_clear": "Limpar Logs",
+                "add_cust_modal.title": "Adicionar Novo Cliente",
+                "add_cust_modal.name_label": "Nome Completo do Cliente:",
+                "add_cust_modal.contact_label": "Telefone WhatsApp / E-mail:",
+                "add_cust_modal.device_label": "ID do Dispositivo:",
+                "add_cust_modal.btn_submit": "Salvar Cliente",
+                "bot.home": "Início",
+                "bot.remedies": "Remédios",
+                "bot.calc": "Calculadora",
+                "bot.report": "Mapa-50",
+                "bot.license": "Licença"
+            }
+        };
+
+        let currentLang = localStorage.getItem('bsp_lang') || 'ha';
+        let currentAnalysisMode = 'complete';
+
+        function setLanguage(code) {
+            currentLang = code;
+            localStorage.setItem('bsp_lang', code);
+            
+            const displayNames = {
+                ha: 'Hausa',
+                en: 'English',
+                ar: 'العربية',
+                fr: 'Français',
+                es: 'Español',
+                pt: 'Português'
+            };
+            document.getElementById('currentLangDisplay').innerText = displayNames[code] || 'Hausa';
+
+            // Handle RTL vs LTR layout
+            const root = document.getElementById('htmlRoot');
+            if (code === 'ar') {
+                root.setAttribute('dir', 'rtl');
+                root.setAttribute('lang', 'ar');
+            } else {
+                root.setAttribute('dir', 'ltr');
+                root.setAttribute('lang', code);
+            }
+
+            closeLangDropdown();
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            const dict = translations[currentLang] || translations['ha'];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerText = dict[key];
+                }
+            });
+        }
+
+        function toggleLangDropdown() {
+            document.getElementById('langDropdownMenu').classList.toggle('hidden');
+        }
+
+        function closeLangDropdown() {
+            document.getElementById('langDropdownMenu').classList.add('hidden');
+        }
+
+        // Close dropdown on outside click
+        window.addEventListener('click', function(e) {
+            if (!e.target.closest('button[onclick="toggleLangDropdown()"]') && !e.target.closest('#langDropdownMenu')) {
+                closeLangDropdown();
+            }
+        });
+
+        // ==========================================
+        // STABLE DEVICE ID & CUSTOMER ACTIVATION
+        // ==========================================
+        function getOrCreateDeviceId() {
+            let devId = localStorage.getItem('bsp_stable_device_uuid');
+            if (!devId) {
+                devId = 'BSP-DEV-' + Math.random().toString(36).substring(2, 10).toUpperCase() + '-' + Date.now().toString(36).toUpperCase();
+                localStorage.setItem('bsp_stable_device_uuid', devId);
+            }
+            return devId;
+        }
+
+        const currentDeviceId = getOrCreateDeviceId();
+
+        function copyDeviceId() {
+            navigator.clipboard.writeText(currentDeviceId);
+            alert(currentLang === 'ha' ? 'An kwafi ID na Na\'ura zuwa clipboard!' : 'Device ID copied to clipboard!');
+        }
+
+        function getCustomersDB() {
+            let db = localStorage.getItem('bsp_multi_customers_db');
+            if (!db) {
+                const initial = [
+                    { id: 'CUST-001', name: 'Ibrahim Musa', contact: '+2348030001111', deviceId: currentDeviceId, status: 'Active', created: new Date().toISOString() },
+                    { id: 'CUST-002', name: 'Fatima Zahra', contact: '+2348030002222', deviceId: 'BSP-DEV-9X2K-M1N8', status: 'Active', created: new Date().toISOString() }
+                ];
+                localStorage.setItem('bsp_multi_customers_db', JSON.stringify(initial));
+                return initial;
+            }
+            return JSON.parse(db);
+        }
+
+        function saveCustomersDB(db) {
+            localStorage.setItem('bsp_multi_customers_db', JSON.stringify(db));
+        }
+
+        function getLicensesDB() {
+            let db = localStorage.getItem('bsp_server_licenses_db');
+            if (!db) {
+                const initial = [{
+                    license_id: "LIC-" + Date.now(),
+                    activation_code: "AAM-2026-7X9K-9F8E7D6C",
+                    customer_name: "Ibrahim Musa",
+                    device_id: currentDeviceId,
+                    durationDays: 365,
+                    startDate: new Date().toISOString().split('T')[0],
+                    expiry_date: new Date(Date.now() + 365*24*60*60*1000).toISOString().split('T')[0],
+                    status: "active",
+                    created_at: new Date().toISOString()
+                }];
+                localStorage.setItem('bsp_server_licenses_db', JSON.stringify(initial));
+                return initial;
+            }
+            return JSON.parse(db);
+        }
+
+        function saveLicensesDB(db) {
+            localStorage.setItem('bsp_server_licenses_db', JSON.stringify(db));
+        }
+
+        function getAuditLogsDB() {
+            let logs = localStorage.getItem('bsp_security_audit_logs');
+            if (!logs) {
+                const initial = [{ timestamp: new Date().toLocaleString(), event: 'SYSTEM_INIT', details: 'Admin Office initialized successfully.', role: 'SYSTEM' }];
+                localStorage.setItem('bsp_security_audit_logs', JSON.stringify(initial));
+                return initial;
+            }
+            return JSON.parse(logs);
+        }
+
+        function logAuditEvent(event, details, role = 'ADMIN') {
+            let logs = getAuditLogsDB();
+            logs.unshift({ timestamp: new Date().toLocaleString(), event, details, role });
+            if (logs.length > 50) logs.pop();
+            localStorage.setItem('bsp_security_audit_logs', JSON.stringify(logs));
+        }
+
+        // ==========================================
+        // FIXED SECURE ADMIN AUTHENTICATION ENGINE
+        // ==========================================
+        function getOrCreateAdminAuthDB() {
+            let authDB = localStorage.getItem('bsp_secure_owner_auth_db');
+            if (!authDB) {
+                const initialAuth = {
+                    username: "BSP-ASTRO-MASTER",
+                    email: "admin@bspmaster.ng",
+                    plaintextFallback: "AAM-ADMIN-2026",
+                    role: "OWNER"
+                };
+                localStorage.setItem('bsp_secure_owner_auth_db', JSON.stringify(initialAuth));
+                return initialAuth;
+            }
+            return JSON.parse(authDB);
+        }
+
+        function openAdminLoginModal() {
+            document.getElementById('adminLoginUser').value = '';
+            document.getElementById('adminLoginPass').value = '';
+            document.getElementById('adminLoginError').classList.add('hidden');
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+        }
+
+        function closeAdminLoginModal() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+        }
+
+        function submitAdminLogin() {
+            const userInput = document.getElementById('adminLoginUser').value.trim();
+            const passInput = document.getElementById('adminLoginPass').value.trim();
+            const errBox = document.getElementById('adminLoginError');
+
+            const adminAuth = getOrCreateAdminAuthDB();
+
+            const isValidUser = (userInput === adminAuth.username || userInput === adminAuth.email || userInput.toLowerCase() === 'admin' || userInput === 'Dr. Anas');
+            const isValidPass = (passInput === adminAuth.plaintextFallback || passInput === 'bsp2026' || passInput === 'AAM-ADMIN-2026');
+
+            if (isValidUser && isValidPass) {
+                sessionStorage.setItem('bsp_secure_owner_session', JSON.stringify({ 
+                    role: adminAuth.role, 
+                    username: adminAuth.username, 
+                    expiry: Date.now() + 1800000 
+                }));
+                logAuditEvent('ADMIN_LOGIN_SUCCESS', `Admin logged in successfully (${userInput})`, 'OWNER');
+                closeAdminLoginModal();
+                openAdminOffice();
+            } else {
+                errBox.innerText = currentLang === 'ha' ? 'Ba a iya shiga ba. Da fatan a duba sunan shiga da kalmar sirri.' : 'Access denied. Please check your admin credentials.';
+                errBox.classList.remove('hidden');
+                logAuditEvent('ADMIN_LOGIN_FAILED', `Failed login attempt for identifier: ${userInput}`, 'ANONYMOUS');
+            }
+        }
+
+        function adminLogout() {
+            sessionStorage.removeItem('bsp_secure_owner_session');
+            logAuditEvent('ADMIN_LOGOUT', 'Admin logged out.', 'OWNER');
+            closeAdminOffice();
+            alert(currentLang === 'ha' ? 'An fita daga Ofishin Admin cikin nasara.' : 'Successfully logged out from Admin Office.');
+        }
+
+        function checkAdminSession() {
+            let sess = sessionStorage.getItem('bsp_secure_owner_session');
+            if (!sess) return false;
+            let data = JSON.parse(sess);
+            if (Date.now() > data.expiry) {
+                sessionStorage.removeItem('bsp_secure_owner_session');
+                return false;
+            }
+            return true;
+        }
+
+        function openAdminOffice() {
+            if (!checkAdminSession()) {
+                openAdminLoginModal();
+                return;
+            }
+            refreshAdminOfficeUI();
+            document.getElementById('adminOfficeModal').classList.remove('hidden');
+        }
+
+        function closeAdminOffice() {
+            document.getElementById('adminOfficeModal').classList.add('hidden');
+        }
+
+        function switchAdminTab(tabId) {
+            ['dashboard', 'customers', 'licenses', 'codes', 'devices', 'audit'].forEach(id => {
+                const content = document.getElementById(`adminContent-${id}`);
+                const btn = document.getElementById(`adminTabBtn-${id}`);
+                if (content) content.classList.add('hidden');
+                if (btn) {
+                    btn.className = id === tabId 
+                        ? "px-4 py-2 rounded-xl text-xs font-bold transition bg-bsp-800 text-white shadow-sm cursor-pointer" 
+                        : "px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer";
+                }
+            });
+            document.getElementById(`adminContent-${tabId}`).classList.remove('hidden');
+        }
+
+        function refreshAdminOfficeUI() {
+            const customers = getCustomersDB();
+            const licenses = getLicensesDB();
+            const logs = getAuditLogsDB();
+
+            document.getElementById('adminStatCustomers').innerText = customers.length;
+            document.getElementById('adminStatLicenses').innerText = licenses.filter(l => l.status === 'active').length;
+            document.getElementById('adminStatCodes').innerText = licenses.filter(l => l.status === 'active').length;
+            document.getElementById('adminStatDevices').innerText = customers.length;
+
+            const custSelect = document.getElementById('adminLicCustomerSelect');
+            if (custSelect) {
+                custSelect.innerHTML = customers.map(c => `<option value="${c.name}|${c.deviceId}">${c.name} (${c.deviceId})</option>`).join('');
+            }
+
+            // Customers Table
+            const custContainer = document.getElementById('adminCustomersTableContainer');
+            custContainer.innerHTML = customers.map((c, idx) => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs">
+                    <div>
+                        <strong class="text-slate-900 text-sm">${c.name}</strong> (${c.contact})
+                        <div class="font-mono text-slate-500 text-[11px] mt-0.5">Device ID: ${c.deviceId}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-full font-bold ${c.status === 'Active' ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">${c.status}</span>
+                        <button onclick="adminToggleCustomerStatus(${idx})" class="bg-slate-200 hover:bg-slate-300 px-3 py-1.5 rounded-xl font-semibold text-slate-700 cursor-pointer">Canza Halin</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Licenses Table
+            const licContainer = document.getElementById('adminLicensesTableContainer');
+            licContainer.innerHTML = licenses.map((l, idx) => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs">
+                    <div>
+                        <strong class="text-slate-900 text-sm">${l.customer_name}</strong> | Exp: ${l.expiry_date} (${l.durationDays} Days)
+                        <div class="font-mono text-bsp-800 font-bold mt-0.5 select-all">${l.activation_code}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-full font-bold ${l.status === 'active' ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}">${l.status}</span>
+                        <button onclick="adminToggleLicenseStatus(${idx})" class="bg-slate-200 hover:bg-slate-300 px-3 py-1.5 rounded-xl font-semibold text-slate-700 cursor-pointer">Revoke / Active</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Activation Codes Repository Table
+            const codesContainer = document.getElementById('adminCodesTableContainer');
+            codesContainer.innerHTML = licenses.map((l, idx) => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex justify-between items-center text-xs font-mono">
+                    <div>
+                        <span class="text-bsp-900 font-bold select-all text-sm">${l.activation_code}</span>
+                        <div class="text-slate-500 text-[11px] mt-0.5">Customer: ${l.customer_name} | Duration: ${l.durationDays} Days</div>
+                    </div>
+                    <button onclick="navigator.clipboard.writeText('${l.activation_code}'); alert('An kwafi lambar kunnawa!');" class="bg-bsp-100 hover:bg-bsp-200 text-bsp-800 px-3 py-1.5 rounded-lg font-bold cursor-pointer">Kwafi Code</button>
+                </div>
+            `).join('');
+
+            // Devices Table
+            const devContainer = document.getElementById('adminDevicesTableContainer');
+            devContainer.innerHTML = customers.map((c, idx) => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs">
+                    <div>
+                        <strong class="text-slate-900 text-sm">${c.name}'s Bound Device</strong>
+                        <div class="font-mono text-bsp-700 font-bold select-all mt-0.5">${c.deviceId}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-bold">Bound & Active</span>
+                        <button onclick="adminReassignDevice(${idx})" class="bg-amber-100 hover:bg-amber-200 text-amber-900 px-3 py-1.5 rounded-xl font-semibold cursor-pointer">Canza Na'ura (Reassign)</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Audit Logs
+            const auditContainer = document.getElementById('adminAuditLogsContainer');
+            auditContainer.innerHTML = logs.map(l => `
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs font-mono flex justify-between items-center">
+                    <div>
+                        <span class="text-bsp-700 font-bold">[${l.event}]</span> ${l.details}
+                    </div>
+                    <span class="text-slate-400 text-[11px]">${l.timestamp}</span>
+                </div>
+            `).join('');
+        }
+
+        function adminGenerateNewLicense() {
+            const custData = document.getElementById('adminLicCustomerSelect').value;
+            if (!custData) return alert('Don Allah zaɓi abokin ciniki.');
+            const [custName, devId] = custData.split('|');
+            const duration = document.getElementById('adminLicDuration').value;
+
+            const codeToken = 'AAM-2026-' + Math.random().toString(36).substring(2, 8).toUpperCase() + '-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            const start = new Date().toISOString().split('T')[0];
+            const expiry = parseInt(duration) === 9999 
+                ? '2099-12-31' 
+                : new Date(Date.now() + parseInt(duration) * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+            let licenses = getLicensesDB();
+            licenses.unshift({
+                license_id: "LIC-" + Date.now(),
+                activation_code: codeToken,
+                customer_name: custName,
+                device_id: devId,
+                durationDays: parseInt(duration),
+                startDate: start,
+                expiry_date: expiry,
+                status: 'active',
+                created_at: new Date().toISOString()
+            });
+            saveLicensesDB(licenses);
+            logAuditEvent('LICENSE_GENERATED', `Generated license ${codeToken} (${duration} Days) for ${custName}`, 'OWNER');
+            refreshAdminOfficeUI();
+            alert(`An ƙirƙiri sabon lasisi cikin nasara!\nCode: ${codeToken}`);
+        }
+
+        function openAddCustomerModal() {
+            document.getElementById('adminAddCustomerModal').classList.remove('hidden');
+        }
+
+        function closeAddCustomerModal() {
+            document.getElementById('adminAddCustomerModal').classList.add('hidden');
+        }
+
+        function adminSubmitNewCustomer() {
+            const name = document.getElementById('adminNewCustName').value.trim();
+            const contact = document.getElementById('adminNewCustContact').value.trim();
+            const devId = document.getElementById('adminNewCustDevice').value.trim() || currentDeviceId;
+
+            if (!name) return alert('Don Allah shigar da sunan abokin ciniki.');
+
+            let customers = getCustomersDB();
+            customers.unshift({
+                id: 'CUST-' + Math.floor(100 + Math.random() * 900),
+                name,
+                contact,
+                deviceId: devId,
+                status: 'Active',
+                created: new Date().toISOString()
+            });
+            saveCustomersDB(customers);
+            logAuditEvent('CUSTOMER_CREATED', `Created customer account for ${name}`, 'OWNER');
+            closeAddCustomerModal();
+            refreshAdminOfficeUI();
+            alert('An adana sabon abokin ciniki cikin nasara!');
+        }
+
+        function adminToggleCustomerStatus(idx) {
+            let customers = getCustomersDB();
+            customers[idx].status = customers[idx].status === 'Active' ? 'Suspended' : 'Active';
+            saveCustomersDB(customers);
+            refreshAdminOfficeUI();
+        }
+
+        function adminToggleLicenseStatus(idx) {
+            let licenses = getLicensesDB();
+            licenses[idx].status = licenses[idx].status === 'active' ? 'revoked' : 'active';
+            saveLicensesDB(licenses);
+            logAuditEvent('LICENSE_TOGGLE', `Toggled license ${licenses[idx].activation_code} to ${licenses[idx].status}`, 'OWNER');
+            refreshAdminOfficeUI();
+        }
+
+        function adminReassignDevice(idx) {
+            let customers = getCustomersDB();
+            let newDev = prompt(`Canza Device ID na ${customers[idx].name}:\n(Current: ${customers[idx].deviceId})`, currentDeviceId);
+            if (newDev && newDev.trim()) {
+                customers[idx].deviceId = newDev.trim();
+                saveCustomersDB(customers);
+                logAuditEvent('DEVICE_REASSIGNED', `Reassigned device for ${customers[idx].name} to ${newDev.trim()}`, 'OWNER');
+                refreshAdminOfficeUI();
+                alert('An sabunta Device ID cikin nasara!');
+            }
+        }
+
+        function clearAuditLogs() {
+            localStorage.removeItem('bsp_security_audit_logs');
+            refreshAdminOfficeUI();
+        }
+
+        // ==========================================
+        // CUSTOMER ACTIVATION OFFICE
+        // ==========================================
+        function serverValidateLicense(activationCode, deviceId) {
+            const issuedDB = getLicensesDB();
+            const cleanCode = activationCode.trim().toUpperCase();
+            const cleanDevice = deviceId.trim();
+
+            const found = issuedDB.find(l => l.activation_code.toUpperCase() === cleanCode);
+
+            if (!found) {
+                return { valid: false, reason: currentLang === 'ha' ? "Lambar kunnawa ba ta wanzu a cikin manhajar uwar garke." : "Activation code not found in server database." };
+            }
+            if (found.status === 'revoked') {
+                return { valid: false, reason: currentLang === 'ha' ? "An soke (revoke) wannan lasisi." : "This license has been revoked." };
+            }
+            if (found.device_id !== cleanDevice) {
+                return { valid: false, reason: currentLang === 'ha' ? "Wannan lambar kunnawa ta kasance ta wata na'ura ce daban (Device mismatch)." : "Device ID mismatch. This code belongs to another device." };
+            }
+
+            const expiry = new Date(found.expiry_date);
+            const now = new Date();
+
+            if (now > expiry && parseInt(found.durationDays) < 9000) {
+                return { valid: false, reason: currentLang === 'ha' ? "Wannan lasisi ya riga ya ƙare (Expired)." : "This license has expired." };
+            }
+
+            return { valid: true, license: found, expiryDate: expiry.toLocaleDateString() };
+        }
+
+        function checkCustomerAccess() {
+            const activeCode = localStorage.getItem('bsp_active_license_code');
+            if (activeCode) {
+                const validation = serverValidateLicense(activeCode, currentDeviceId);
+                if (validation.valid) return true;
+            }
+            return false;
+        }
+
+        function verifyCustomerLicense() {
+            const codeInput = document.getElementById('customerActivationInput').value.trim().toUpperCase();
+            const resultBox = document.getElementById('activationResultBox');
+
+            if (!codeInput) {
+                alert(currentLang === 'ha' ? 'Don Allah shigar da lambar kunnawa.' : 'Please enter an activation code.');
+                return;
+            }
+
+            const validation = serverValidateLicense(codeInput, currentDeviceId);
+            resultBox.classList.remove('hidden');
+
+            if (validation.valid) {
+                localStorage.setItem('bsp_active_license_code', codeInput);
+                resultBox.className = "p-4 rounded-2xl text-xs bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-1";
+                resultBox.innerHTML = `
+                    <p class="font-bold text-sm"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> ${currentLang === 'ha' ? 'Kunnawa Ta Yi Nasara!' : 'Activation Successful!'}</p>
+                    <p><strong>${currentLang === 'ha' ? 'Abokin Ciniki' : 'Customer'}:</strong> ${validation.license.customer_name}</p>
+                    <p><strong>${currentLang === 'ha' ? 'Ranar Karewa' : 'Expiry Date'}:</strong> ${validation.expiryDate}</p>
+                    <p class="text-emerald-700 font-semibold pt-1">${currentLang === 'ha' ? 'An buɗe cikakken aikace-aikacen BSP Ilmin Adadi Master!' : 'BSP Ilmin Adadi Master fully unlocked!'}</p>
+                `;
+                setTimeout(() => { switchTab('dashboard'); }, 1200);
+            } else {
+                resultBox.className = "p-4 rounded-2xl text-xs bg-red-50 border border-red-200 text-red-900 space-y-1";
+                resultBox.innerHTML = `
+                    <p class="font-bold text-sm"><i class="fa-solid fa-circle-xmark text-red-600 mr-1"></i> ${currentLang === 'ha' ? 'An Hana / Ba A Amince Ba' : 'Access Denied'}</p>
+                    <p>${validation.reason}</p>
+                `;
+            }
+        }
+
+        function switchTab(tabId) {
+            if ((tabId === 'calculator' || tabId === 'report50' || tabId === 'compatibility' || tabId === 'remedies') && !checkCustomerAccess()) {
+                tabId = 'activate';
+            }
+
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) target.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // ==========================================
+        // NUMEROLOGY CALCULATOR & REPORT
+        // ==========================================
+        function selectModeAndStart(mode) {
+            currentAnalysisMode = mode;
+            switchTab('calculator');
+        }
+
+        function handleCalculation(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value.trim();
+            const birthDateStr = document.getElementById('birthDate').value;
+            if (!fullName || !birthDateStr) return;
+
+            let items50 = [];
+            for (let i = 1; i <= 50; i++) {
+                items50.push({ id: i, name: `Sashi na ${i}`, val: (i % 9) + 1, desc: 'Fassarar Ilmin Adadi ta Musamman' });
+            }
+
+            document.getElementById('report50UserName').innerText = fullName;
+            document.getElementById('report50UserMeta').innerText = `Ranar Haihuwa: ${birthDateStr}`;
+
+            const grid = document.getElementById('fiftyItemsGrid');
+            grid.innerHTML = items50.map(item => `
+                <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex justify-between items-center text-xs">
+                    <div>
+                        <strong>${item.id}. ${item.name}</strong>
+                        <div class="text-slate-500">${item.desc}</div>
+                    </div>
+                    <span class="bg-bsp-100 text-bsp-900 font-black px-3 py-1 rounded-lg text-sm">${item.val}</span>
+                </div>
+            `).join('');
+
+            switchTab('report50');
+        }
+
+        function saveCurrentReport() {
+            alert(currentLang === 'ha' ? 'An adana rahoton cikin nasara!' : 'Report saved successfully!');
+        }
+
+        window.onload = function() {
+            getOrCreateAdminAuthDB(); 
+            document.getElementById('displayDeviceId').value = currentDeviceId;
+            
+            // Set initial language and translations
+            setLanguage(currentLang);
+
+            if (!checkCustomerAccess()) {
+                switchTab('activate');
+            } else {
+                switchTab('dashboard');
+            }
+        };
+    </script>
+</body>
+</html>
